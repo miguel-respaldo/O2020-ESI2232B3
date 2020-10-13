@@ -1,0 +1,11 @@
+cadena = "Estas aprendiendo a utilizar la función split"
+lista = cadena.split(" ")
+print(lista)
+print(lista[3])
+lista2 = cadena.split("a")
+print(lista2)
+cadena2 = str(input("Ingresa tu fecha con el formato DD/MM/AAAA: "))
+lista3 = cadena2.split("/")
+print(lista3[0])
+print(int(lista3[1]))
+print(lista3[2])
