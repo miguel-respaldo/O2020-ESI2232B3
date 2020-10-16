@@ -43,6 +43,29 @@ def resta_vector():
     print("")
 
 
+def producto_punto():
+    v1 = []
+    v2 = []
+    res = 0.0
+
+    print("Introduce los valores del primer vector: ")
+    for i in range(3):
+        numero = float(input("Escribe el valor " + str(i+1) + ": "))
+        v1.append(numero)
+
+    print("Introduce los valores del segundo vector: ")
+    for i in range(3):
+        numero = float(input("Escribe el valor " + str(i+1) + ": "))
+        v2.append(numero)
+
+    for i in range(3):
+        numero = v1[i] * v2[i]
+        res = res + numero
+
+    print("")
+    print("El resultado es:", res)
+    print("")
+
 
 def menu():
     print("Menu de calculadora de vectores")
@@ -69,7 +92,7 @@ while opcion != 4:
     elif opcion == 2:
         resta_vector()
     elif opcion == 3:
-        print("opción 3")
+        producto_punto()
     elif opcion < 1 or opcion > 4:
         print("Opción Invalida")
         print("")
