@@ -5,8 +5,29 @@ cantidad =  [8,             4,      8,             3,       5,  7 ]
 
 def imprimir_productos():
     tamanio = len(productos)
+    print("Producto   Cantidad  Precio")
+    print("---------------------------------")
     for i in range(tamanio):  # 5 ->  0,1,2,3,4
-        print(productos[i])
+        print(productos[i] + "   " + str(cantidad[i]) + "    " + str(precios[i]))
+    print("")
+
+
+def comprar():
+    tamanio = len(productos)
+    for i in range(tamanio):  # 5 ->  0,1,2,3,4
+        print(str(i+1) + ".- " +productos[i])
+    print("")
+    num_prod = int(input("Cual producto vas a comparar?: "))
+    cantidad[num_prod-1] = cantidad[num_prod-1] - 1
+
+
+def surtir():
+    tamanio = len(productos)
+    for i in range(tamanio):  # 5 ->  0,1,2,3,4
+        print(str(i+1) + ".- " +productos[i])
+    print("")
+    num_prod = int(input("Cual producto vas a surtir?: "))
+    cantidad[num_prod-1] = cantidad[num_prod-1] + 1
 
 
 def menu():
@@ -32,9 +53,9 @@ while opcion != 4:
     if opcion == 1:
         imprimir_productos()
     elif opcion == 2:
-        print("Comprar")
+        comprar()
     elif opcion == 3:
-        print("Surtir")
+        surtir()
     elif opcion < 1 or opcion > 4:
         print("Opción Invalida")
         print("")
