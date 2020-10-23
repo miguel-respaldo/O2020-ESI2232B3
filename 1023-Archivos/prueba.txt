@@ -1,0 +1,6 @@
+Algoritmos y Programación
+
+Este es un texto plano para ejemplificar la manipulación de archivos de texto.
+Un archivo de texto simple, texto sencillo o texto sin formato (también llamado texto llano o texto simle;
+en inglés "plain text"), es un archivo informático que contiene únicamente texto formado solo por caracteres
+qu son legibles por humanos, careciendo de cualquier tipo de formato tipográfico.
