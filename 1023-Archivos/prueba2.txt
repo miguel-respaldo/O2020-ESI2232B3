@@ -1,0 +1,5 @@
+Producto,precio
+agua,5
+coca,10
+tortillas,15
+platanitos,10
