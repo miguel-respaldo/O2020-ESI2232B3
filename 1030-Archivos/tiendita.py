@@ -25,11 +25,44 @@ def imprimir_productos():
 def comprar():
     # Nos saltamos la primera linea
     next(lector)
+    contador=1
+    num_producto=0
+    lista=[]
     for fila in lector:
-        print(str(i+1) + ".- " + fila[0])
+        print(str(contador) + ".- " + fila[0])
+        lista.append(fila[0])
+        contador = contador+1
     print("")
-    num_prod = int(input("Cual producto vas a comparar?: "))
-    cantidad[num_prod-1] = cantidad[num_prod-1] - 1
+    archivo.seek(0)
+    producto = str(input("¿Cual producto quieres comparar?: "))
+    # Verifico si es número o texto
+    if producto.isnumeric():
+        num_producto=int(producto)
+        if num_producto < 1 or num_producto > contador-1:
+            print("El producto no existe.")
+            return
+        else:
+            producto = lista[num_producto-1]
+
+    if producto not in lista:
+        print("El producto no existe")
+        return
+
+    cantidad = int(input("Cantidad de producto: "))
+
+    archivo_temporal = open("temporal.csv","w")
+    escritor=csv.writer(archivo_temporal)
+    for fila in lector:
+        if fila[0] == producto:
+            print("si es igual")
+            escritor.writerow(fila)
+        else:
+            escritor.writerow(fila)
+    archivo_temporal.close()
+
+
+
+
 
 
 def surtir():
