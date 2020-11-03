@@ -130,6 +130,25 @@ def surtir():
     os.rename("temporal.csv","productos.csv")
     abrir()
 
+def agregar():
+    global archivo
+    nuevo_producto = ["nombre","precio","cantidad"]
+    # Pedir al usuario el producto
+    nuevo_producto[0] = str(input("Escribe el nombre del producto: "))
+    # Pedir al usuario la cantidad
+    nuevo_producto[2] = str(input("Escribe la cantidad del producto: "))
+    # Pedir al usuario el precio
+    nuevo_producto[1] = str(input("Escribe el precio del producto: "))
+    # Abrir archivo para agregar al Final
+    archivo.close()
+    archivo = open("productos.csv","a")
+    # Escribir en el archivo los datos recolectados
+    escritor=csv.writer(archivo)
+    escritor.writerow(nuevo_producto)
+    archivo.close()
+    abrir()
+
+
 
 def menu():
     print("Menu de Productos")
@@ -137,8 +156,9 @@ def menu():
     print("1. Imprimir productos")
     print("2. Comparar algun producto")
     print("3. Surtir producto")
+    print("4. Agregar producto")
     print("")
-    print("4. Salir")
+    print("5. Salir")
     print("")
     opcion = int(input("Opción: "))
     return opcion
@@ -149,7 +169,7 @@ def principal():
     # Abrir el archivo a usar
     abrir()
     # mientras opción es diferente de 4
-    while opcion != 4:
+    while opcion != 5:
 
         opcion = menu()
 
@@ -159,7 +179,9 @@ def principal():
             comprar()
         elif opcion == 3:
             surtir()
-        elif opcion < 1 or opcion > 4:
+        elif opcion == 4:
+            agregar()
+        elif opcion < 1 or opcion > 5:
             print("Opción Invalida")
             print("")
 
