@@ -9,7 +9,7 @@ SubAlgoritmo surtir ()
 	funcion_python2("archivo.seek(0)");
 	Escribir "¿Cual producto quieres surtir?:";
 	Leer producto;
-	
+
 	Si producto = "numero" Entonces
 		producto_num <- 1;
 		Si producto_num < 1 | producto_num > 6 Entonces
@@ -18,16 +18,16 @@ SubAlgoritmo surtir ()
 			funcion_python2("return");
 		FinSi
 	FinSi
-	
+
 	Si producto = "no en lista" Entonces
 		Escribir "El producto no existe";
 		Escribir "";
 		funcion_python2("return");
 	FinSi
-	
-	Escribir "Cantidad de producto";
+
+	Escribir "Cantidad de producto a surtir";
 	Leer producto_num;
-	
+
 	Si producto_num < 1 Entonces
 		Escribir "La cantidad es invalida";
 		Escribir "";
@@ -37,11 +37,7 @@ SubAlgoritmo surtir ()
 	funcion_python2("Crear temporal");
 	Para lector <- 1 Hasta 5 Con Paso 1 Hacer
 		Si lector = 1 Entonces
-			Si producto_num > 5 Entonces
-				Escribir "No hay suficiente producto";
-			SiNo
-				producto_num <- 3;
-			FinSi
+			producto_num <- producto_num + 5;
 			funcion_python2("writerow");
 		SiNo
 			funcion_python2("writerow");
@@ -54,7 +50,26 @@ SubAlgoritmo surtir ()
 FinSubAlgoritmo
 
 SubAlgoritmo agregar ()
-	Definir lector Como Entero;
+	Definir precio Como Real;
+	Definir cantidad Como Entero;
+	Definir producto Como Caracter;
+    // Pedir al usuario el producto
+    Escribir "Escribe el nombre del producto:";
+	Leer producto;
+    // Pedir al usuario la cantidad
+    Escribir "Escribe la cantidad del producto: ";
+	Leer cantidad;
+    // Pedir al usuario el precio
+    Escribir "Escribe el precio del producto: ";
+	Leer producto;
+    // Abrir archivo para agregar al Final
+    funcion_python2("archivo close");
+	funcion_python2("open como append");
+    // Escribir en el archivo los datos recolectados
+	funcion_python2("escritor writer");
+	funcion_python2("writerow");
+	funcion_python2("close");
+	funcion_python2("abrir");
 FinSubAlgoritmo
 
 SubAlgoritmo quitar ()
@@ -68,7 +83,7 @@ SubAlgoritmo quitar ()
 	funcion_python2("archivo.seek(0)");
 	Escribir "¿Cual producto quieres quitar?:";
 	Leer producto;
-	
+
 	Si producto = "numero" Entonces
 		producto_num <- 1;
 		Si producto_num < 1 | producto_num > 6 Entonces
@@ -77,32 +92,16 @@ SubAlgoritmo quitar ()
 			funcion_python2("return");
 		FinSi
 	FinSi
-	
+
 	Si producto = "no en lista" Entonces
 		Escribir "El producto no existe";
 		Escribir "";
 		funcion_python2("return");
 	FinSi
-	
-	Escribir "Cantidad de producto";
-	Leer producto_num;
-	
-	Si producto_num < 1 Entonces
-		Escribir "La cantidad es invalida";
-		Escribir "";
-		funcion_python2("return");
-	FinSi
-	
+
 	funcion_python2("Crear temporal");
 	Para lector <- 1 Hasta 5 Con Paso 1 Hacer
-		Si lector = 1 Entonces
-			Si producto_num > 5 Entonces
-				Escribir "No hay suficiente producto";
-			SiNo
-				producto_num <- 3;
-			FinSi
-			funcion_python2("writerow");
-		SiNo
+		Si lector <> 1 Entonces
 			funcion_python2("writerow");
 		FinSi
 	FinPara
