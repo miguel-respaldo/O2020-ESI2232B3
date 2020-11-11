@@ -1,3 +1,117 @@
+SubAlgoritmo surtir ()
+	Definir lector Como Entero;
+	Definir producto Como Caracter;
+	Definir producto_num Como Entero;
+	funcion_python2("next(lector)");
+	Para lector <- 1 Hasta 5 Con Paso 1 Hacer
+		Escribir lector,".- producto";
+	FinPara
+	funcion_python2("archivo.seek(0)");
+	Escribir "¿Cual producto quieres surtir?:";
+	Leer producto;
+	
+	Si producto = "numero" Entonces
+		producto_num <- 1;
+		Si producto_num < 1 | producto_num > 6 Entonces
+			Escribir "El producto no existe";
+			Escribir "";
+			funcion_python2("return");
+		FinSi
+	FinSi
+	
+	Si producto = "no en lista" Entonces
+		Escribir "El producto no existe";
+		Escribir "";
+		funcion_python2("return");
+	FinSi
+	
+	Escribir "Cantidad de producto";
+	Leer producto_num;
+	
+	Si producto_num < 1 Entonces
+		Escribir "La cantidad es invalida";
+		Escribir "";
+		funcion_python2("return");
+	FinSi
+	
+	funcion_python2("Crear temporal");
+	Para lector <- 1 Hasta 5 Con Paso 1 Hacer
+		Si lector = 1 Entonces
+			Si producto_num > 5 Entonces
+				Escribir "No hay suficiente producto";
+			SiNo
+				producto_num <- 3;
+			FinSi
+			funcion_python2("writerow");
+		SiNo
+			funcion_python2("writerow");
+		FinSi
+	FinPara
+	funcion_python2("close");
+	funcion_python2("remove");
+	funcion_python2("rename");
+	abrir();
+FinSubAlgoritmo
+
+SubAlgoritmo agregar ()
+	Definir lector Como Entero;
+FinSubAlgoritmo
+
+SubAlgoritmo quitar ()
+	Definir lector Como Entero;
+	Definir producto Como Caracter;
+	Definir producto_num Como Entero;
+	funcion_python2("next(lector)");
+	Para lector <- 1 Hasta 5 Con Paso 1 Hacer
+		Escribir lector,".- producto";
+	FinPara
+	funcion_python2("archivo.seek(0)");
+	Escribir "¿Cual producto quieres quitar?:";
+	Leer producto;
+	
+	Si producto = "numero" Entonces
+		producto_num <- 1;
+		Si producto_num < 1 | producto_num > 6 Entonces
+			Escribir "El producto no existe";
+			Escribir "";
+			funcion_python2("return");
+		FinSi
+	FinSi
+	
+	Si producto = "no en lista" Entonces
+		Escribir "El producto no existe";
+		Escribir "";
+		funcion_python2("return");
+	FinSi
+	
+	Escribir "Cantidad de producto";
+	Leer producto_num;
+	
+	Si producto_num < 1 Entonces
+		Escribir "La cantidad es invalida";
+		Escribir "";
+		funcion_python2("return");
+	FinSi
+	
+	funcion_python2("Crear temporal");
+	Para lector <- 1 Hasta 5 Con Paso 1 Hacer
+		Si lector = 1 Entonces
+			Si producto_num > 5 Entonces
+				Escribir "No hay suficiente producto";
+			SiNo
+				producto_num <- 3;
+			FinSi
+			funcion_python2("writerow");
+		SiNo
+			funcion_python2("writerow");
+		FinSi
+	FinPara
+	funcion_python2("close");
+	funcion_python2("remove");
+	funcion_python2("rename");
+	abrir();
+FinSubAlgoritmo
+
 SubAlgoritmo comprar ()
 	Definir lector Como Entero;
 	Definir producto Como Caracter;
@@ -110,11 +224,11 @@ Algoritmo tiendita
 			2:
 				comprar();
 			3:
-				Escribir "surtir";
+				surtir();
 			4:
-				Escribir "agregar";
+				agregar();
 			5:
-				Escribir "quitar";
+				quitar();
 			De Otro Modo:
 				Escribir "Opción Invalida";
 				Escribir "";
