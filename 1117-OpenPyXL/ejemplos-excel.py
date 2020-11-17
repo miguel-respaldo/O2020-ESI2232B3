@@ -1,17 +1,24 @@
 import openpyxl
 
+# Creamos un nuevo archivo/Libro de Excel
 mixls = openpyxl.Workbook()
 
-print(mixls.get_sheet_names())
+# Imprimo los nombres de las hojas
+print(mixls.sheetnames)
 
+# Selecciono la hoja activa
 hoja = mixls.active
 
+# Imprimimos el titulo de la hoja
 print(hoja.title)
 
+# Modificamos el titulo de la hoja
 hoja.title = "Nuevo nombre"
 
-print(mixls.get_sheet_names())
+# Imprimimos las hojas del libro
+print(mixls.sheetnames)
 
+# Guardamos este archivo de excel con el nombre nuevoExcel.xlsx
 mixls.save("nuevoExcel.xlsx")
 
 
