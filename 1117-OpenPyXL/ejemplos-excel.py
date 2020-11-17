@@ -10,7 +10,7 @@ print(mixls.sheetnames)
 hoja = mixls.active
 
 # Imprimimos el titulo de la hoja
-print(hoja.title)
+print("Titulo de la hoja activa:",hoja.title)
 
 # Modificamos el titulo de la hoja
 hoja.title = "Nuevo nombre"
