@@ -15,7 +15,7 @@ def imprimir_productos():
     print("---------------------------------")
     for fila in hoja.values:
         # Este if es para no imprimir la cabecera (la fila 1)
-        if fila[0] == "producto":
+        if fila[0] == "producto" or fila[0] == "borrado":
             continue
         print(fila[0] + "   " + str(fila[2]) + "    " + str(fila[1]))
     print("")
@@ -122,17 +122,19 @@ def surtir():
 
 
 def quitar():
-    # Nos saltamos la primera linea
-    next(lector)
     contador=1
     num_producto=0
     lista=[]
-    for fila in lector:
+
+    for fila in hoja.values:
+         # Este if es para no imprimir la cabecera (la fila 1)
+        if fila[0] == "producto":
+            continue
         print(str(contador) + ".- " + fila[0])
         lista.append(fila[0])
         contador = contador+1
     print("")
-    archivo.seek(0)
+
     producto = str(input("¿Cual producto quieres quitar?: "))
     # Verifico si es número o texto
     if producto.isnumeric():
@@ -149,18 +151,15 @@ def quitar():
         print("")
         return
 
-    archivo_temporal = open("temporal.csv","w")
-    escritor=csv.writer(archivo_temporal)
-    for fila in lector:
-        # Si el producto es diferente lo escribo en temporal
-        if fila[0] != producto:
-            escritor.writerow(fila)
+    for fila in range(contador-1):
+        # Si el producto es el que estoy buscando
+        if hoja["A"+str(fila+1)].value == producto:
+            # Verifico si tengo suficiente producto
+            hoja["A"+str(fila+1)] = "borrado"
+            hoja["B"+str(fila+1)] = "borrado"
+            hoja["C"+str(fila+1)] = "borrado"
 
-    archivo_temporal.close()
-    archivo.close()
-    os.remove("productos.csv")
-    os.rename("temporal.csv","productos.csv")
-    abrir()
+    archivo.save("productos.xlsx")
 
 
 def agregar():
@@ -173,14 +172,16 @@ def agregar():
     # Pedir al usuario el precio
     nuevo_producto[1] = str(input("Escribe el precio del producto: "))
     # Abrir archivo para agregar al Final
-    archivo.close()
-    archivo = open("productos.csv","a")
-    # Escribir en el archivo los datos recolectados
-    escritor=csv.writer(archivo)
-    escritor.writerow(nuevo_producto)
-    archivo.close()
-    abrir()
 
+    contador=1
+    for fila in hoja.values:
+        contador = contador+1
+
+    hoja["A"+str(contador)] = nuevo_producto[0]
+    hoja["B"+str(contador)] = float(nuevo_producto[1])
+    hoja["C"+str(contador)] = int(nuevo_producto[2])
+
+    archivo.save("productos.xlsx")
 
 
 def menu():
